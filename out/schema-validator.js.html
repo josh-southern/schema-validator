@@ -1,4 +1,32 @@
-/** Functional programming utilities. */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: schema-validator.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: schema-validator.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Functional programming utilities. */
 var _ = {
   /**
    * Takes a function and returns a curried function.
@@ -43,7 +71,7 @@ var _ = {
   map: function (fn, list){
     var res = [];
 
-    for (var i = 0; i < list.length; i++){
+    for (var i = 0; i &lt; list.length; i++){
       res.push(fn(list[i]));
     }
 
@@ -57,7 +85,7 @@ var _ = {
   all: function (list){
     var res = true;
 
-    for (var i = 0; i < list.length; i++){
+    for (var i = 0; i &lt; list.length; i++){
       if (list[i] !== true){
         res = false;
       }
@@ -75,15 +103,15 @@ var _ = {
     var res = [];
 
     if (Array.isArray(fnlist)){
-      for (var i = 0; i < fnlist.length; i++){
-        for (var j = 0; j < list.length; j++){
+      for (var i = 0; i &lt; fnlist.length; i++){
+        for (var j = 0; j &lt; list.length; j++){
           res.push(fnlist[i](list[j]));
         } 
       }      
     }
 
     else {
-      for (var i = 0; i < list.length; i++){
+      for (var i = 0; i &lt; list.length; i++){
         res.push(fnlist(list[i]));
       }
     }
@@ -296,7 +324,7 @@ var IsPattern = _.curry(function (pattern, string){
  */
 var IsMaxLength = _.curry(function (max, string){
   if (IsString(string)){
-    if (string.length <= max){
+    if (string.length &lt;= max){
       return true;
     }
 
@@ -351,7 +379,7 @@ var IsBetweenLength = _.curry(function (min, max, string){
  */
 var IsMaxInt = _.curry(function (max, number){
   if (IsNumber(number)){
-    if (number <= max){
+    if (number &lt;= max){
       return true;
     }
 
@@ -390,7 +418,7 @@ var IsMinInt = _.curry(function (min, number){
 /** Checks if a string only contains a-z, A-Z, 0-9, -, and _ */
 var IsUsername     = IsPattern(/^[a-zA-Z0-9\.\-_]+$/);
 /** Checks if a string only contains legal emails according to RFC 5322 (soruce: http://emailregex.com/) */
-var IsEmail        = IsPattern(/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i);
+var IsEmail        = IsPattern(/^[-a-z0-9~!$%^&amp;*_=+}{\'?]+(\.[-a-z0-9~!$%^&amp;*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i);
 /** Checks if a string only contains a-z, A-Z, and 0-9 */
 var IsAlphaNumeric = IsPattern(/^[a-zA-Z0-9]+$/);
 
@@ -440,7 +468,7 @@ var AlphaNumeric  = Rule.of([IsAlphaNumeric]);
 var EvaluateSchema = _.curry(function (cursor, obj){
 
   // Check if the object has a value at the give cursor and return Missing if it does not
-  if (obj === undefined || obj === null || obj === '' || (IsArray(obj) && obj === [])){
+  if (obj === undefined || obj === null || obj === '' || (IsArray(obj) &amp;&amp; obj === [])){
     return Missing.of(true);
   }
 
@@ -526,3 +554,26 @@ module.exports = {
   Generic: Generic,
   _: _
 };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EvaluatedRule.html">EvaluatedRule</a></li><li><a href="EvaluatedSchema.html">EvaluatedSchema</a></li><li><a href="Generic.html">Generic</a></li><li><a href="Missing.html">Missing</a></li><li><a href="Rule.html">Rule</a></li><li><a href="Schema.html">Schema</a></li><li><a href="Unexpected.html">Unexpected</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_">_</a></li><li><a href="global.html#EvaluateRule">EvaluateRule</a></li><li><a href="global.html#EvaluateSchema">EvaluateSchema</a></li><li><a href="global.html#IsAlphaNumeric">IsAlphaNumeric</a></li><li><a href="global.html#IsArray">IsArray</a></li><li><a href="global.html#IsBetweenLength">IsBetweenLength</a></li><li><a href="global.html#IsEmail">IsEmail</a></li><li><a href="global.html#IsFunction">IsFunction</a></li><li><a href="global.html#IsMaxInt">IsMaxInt</a></li><li><a href="global.html#IsMaxLength">IsMaxLength</a></li><li><a href="global.html#IsMinLength">IsMinLength</a></li><li><a href="global.html#IsNothing">IsNothing</a></li><li><a href="global.html#IsNumber">IsNumber</a></li><li><a href="global.html#IsObject">IsObject</a></li><li><a href="global.html#IsPattern">IsPattern</a></li><li><a href="global.html#IsRule">IsRule</a></li><li><a href="global.html#IsSchema">IsSchema</a></li><li><a href="global.html#IsString">IsString</a></li><li><a href="global.html#IsUsername">IsUsername</a></li><li><a href="global.html#TestPatterns">TestPatterns</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon May 30 2016 20:12:11 GMT-0700 (PDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
